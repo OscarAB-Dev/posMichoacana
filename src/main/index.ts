@@ -203,28 +203,6 @@ ipcMain.handle('products:delete', async (_, id: number) => {
   }
 })
 
-ipcMain.handle('products:seed', async () => {
-  try {
-    const mockProducts = [
-      { name: 'Cerveza Corona 6 Pack', price: 120.0, stock: 50 },
-      { name: 'Cerveza Modelo 6 Pack', price: 130.0, stock: 45 },
-      { name: 'Tequila Jose Cuervo', price: 280.0, stock: 20 },
-      { name: 'Whisky Jack Daniels', price: 450.0, stock: 15 },
-      { name: 'Vodka Smirnoff', price: 180.0, stock: 30 },
-      { name: 'Ron Havana Club', price: 220.0, stock: 25 },
-      { name: 'Gaseosa Coca Cola 2L', price: 28.0, stock: 100 },
-      { name: 'Agua Bonafont 1L', price: 15.0, stock: 80 },
-      { name: 'Chips Sabritas', price: 35.0, stock: 60 },
-      { name: 'Cigarrillos Marlboro', price: 85.0, stock: 40 }
-    ]
-    await db.insert(products).values(mockProducts)
-    return { success: true }
-  } catch (err) {
-    console.error(err)
-    return { success: false, error: 'Error al sembrar productos' }
-  }
-})
-
 ipcMain.handle('employees:getAll', async () => {
   try {
     const result = await db

@@ -284,31 +284,6 @@ const deleteSelectedProducts = async (): Promise<void> => {
     saving.value = false
   }
 }
-
-const seedProducts = async (): Promise<void> => {
-  try {
-    const result = await window.api.seedProducts()
-    if (result.success) {
-      toast.add({
-        severity: 'success',
-        summary: 'Exito',
-        detail: 'Productos de prueba generados',
-        life: 3000
-      })
-      await loadProducts()
-    } else {
-      toast.add({ severity: 'error', summary: 'Error', detail: result.error, life: 3000 })
-    }
-  } catch (err) {
-    console.error(err)
-    toast.add({
-      severity: 'error',
-      summary: 'Error',
-      detail: 'Error al generar productos',
-      life: 3000
-    })
-  }
-}
 </script>
 
 <template>
@@ -329,14 +304,6 @@ const seedProducts = async (): Promise<void> => {
             class="ml-2"
             :disabled="!selectedProducts || !selectedProducts.length"
             @click="confirmDeleteSelected"
-          />
-          <Button
-            label="Generar Datos"
-            icon="pi pi-database"
-            severity="secondary"
-            variant="outlined"
-            class="ml-2"
-            @click="seedProducts"
           />
           <span class="p-input-icon-left flex flex-row gap-2 items-center ml-2">
             <InputText v-model="filters['global'].value" placeholder="Buscar..." />
