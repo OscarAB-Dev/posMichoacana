@@ -7,9 +7,10 @@ import { SafeUser, users, products, sales, saleItems } from './db/schema'
 import { eq, sql, and, gte, lte, count, desc } from 'drizzle-orm'
 import { db, runMigrations } from './db'
 import bcrypt from 'bcryptjs'
+import { updateElectronApp } from 'update-electron-app'
 
 Menu.setApplicationMenu(null)
-
+updateElectronApp()
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
