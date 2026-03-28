@@ -3,47 +3,10 @@
   "version": "1.0.0",
   "description": "Punto de venta sencillo para michoacana usando Electron, Vue y Vueprime",
   "main": "./out/main/index.js",
-  "author": "OscarAB-Dev",
-  "homepage": "https://electron-vite.org",
-  "build": {
-    "appId": "com.posmichoacana.app",
-    "productName": "Pos Michoacana",
-    "directories": {
-      "output": "dist"
-    },
-    "files": [
-      "out/**/*"
-    ],
-    "extraResources": [
-      {
-        "from": "src/drizzle",
-        "to": "drizzle"
-      }
-    ],
-    "win": {
-      "target": [
-        {
-          "target": "portable",
-          "arch": [
-            "x64"
-          ]
-        }
-      ],
-      "icon": "build/icon.ico"
-    },
-    "mac": {
-      "target": [
-        "dmg"
-      ],
-      "icon": "build/icon.icns"
-    },
-    "linux": {
-      "target": [
-        "AppImage"
-      ],
-      "icon": "build/icon.png"
-    }
+  "author": {
+    "name": "OscarAB-Dev"
   },
+  "homepage": "https://electron-vite.org",
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint --cache .",
@@ -53,11 +16,11 @@
     "start": "electron-vite preview",
     "dev": "electron-vite dev",
     "build": "npm run typecheck && electron-vite build",
-    "postinstall": "electron-rebuild -f -w better-sqlite3 && electron-builder install-app-deps",
+    "postinstall": "electron-builder install-app-deps",
     "build:unpack": "npm run build && electron-builder --dir",
-    "build:win": "npm run build && electron-builder --win",
-    "build:mac": "npm run build && electron-builder --mac",
-    "build:linux": "npm run build && electron-builder --linux"
+    "build:win": "npm run build && electron-builder --win --config",
+    "build:mac": "npm run build && electron-builder --mac --config",
+    "build:linux": "npm run build && electron-builder --linux --config"
   },
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.2",
@@ -83,7 +46,6 @@
     "drizzle-kit": "^0.31.10",
     "electron": "^39.2.6",
     "electron-builder": "^26.0.12",
-    "electron-rebuild": "^3.2.9",
     "electron-vite": "^5.0.0",
     "eslint": "^9.39.1",
     "eslint-plugin-vue": "^10.6.2",

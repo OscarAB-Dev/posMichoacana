@@ -1,5 +1,6 @@
-appId: com.electron.app
-productName: posmichoacana
+appId: com.oscarabdev.posmichoacana
+productName: POS Michoacana
+copyright: Copyright © 2026 OscarAB-Dev
 directories:
   buildResources: build
 files:
@@ -11,13 +12,34 @@ files:
   - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
 asarUnpack:
   - resources/**
+  - node_modules/better-sqlite3
+extraResources:
+  - from: src/drizzle
+    to: drizzle
+    filter:
+      - '**/*'
 win:
   executableName: posmichoacana
+  icon: build/icon.ico
+  signAndEditExecutable: false
+  target:
+    - target: nsis
+      arch:
+        - x64
+    - target: portable
+      arch:
+        - x64
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
   uninstallDisplayName: ${productName}
   createDesktopShortcut: always
+  menuCategory: true
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico
+  installerHeaderIcon: build/icon.ico
 mac:
   entitlementsInherit: build/entitlements.mac.plist
   extendInfo:
@@ -37,7 +59,6 @@ linux:
   category: Utility
 appImage:
   artifactName: ${name}-${version}.${ext}
-npmRebuild: false
 publish:
   provider: generic
   url: https://example.com/auto-updates
