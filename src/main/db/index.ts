@@ -18,7 +18,7 @@ export const db = drizzle(sqlite, { schema })
 // Auto-run migrations on startup
 export function runMigrations(): void {
   const migrationsPath = isDev
-    ? path.join(__dirname, '../../drizzle')
+    ? path.join(__dirname, '../../src/drizzle')
     : path.join(process.resourcesPath, 'drizzle')
 
   migrate(db, { migrationsFolder: migrationsPath })

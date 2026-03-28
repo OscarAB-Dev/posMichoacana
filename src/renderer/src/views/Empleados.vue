@@ -213,7 +213,7 @@ const deleteEmployee = async (): Promise<void> => {
         <Column field="role" header="Rol" sortable style="min-width: 8rem">
           <template #body="slotProps">
             <Tag
-              :value="slotProps.data.role === 'cashier' ? 'Empleada' : 'Administrador'"
+              :value="slotProps.data.role === 'cashier' ? 'Empleado' : 'Administrador'"
               :severity="getRoleSeverity(slotProps.data.role)"
             />
           </template>
