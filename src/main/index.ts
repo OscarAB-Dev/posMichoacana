@@ -5,7 +5,7 @@ import icon from '../../resources/icon.png?asset'
 // CHANGED: Import SafeUser type for proper typing of currentUser
 import { SafeUser, users, products, sales, saleItems } from './db/schema'
 import { eq, sql, and, gte, lte, count, desc } from 'drizzle-orm'
-import { db } from './db'
+import { db, runMigrations } from './db'
 import bcrypt from 'bcryptjs'
 
 function createWindow(): void {
@@ -44,6 +44,8 @@ function createWindow(): void {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  runMigrations()
+
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')
 
