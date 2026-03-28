@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, Menu } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
@@ -7,6 +7,8 @@ import { SafeUser, users, products, sales, saleItems } from './db/schema'
 import { eq, sql, and, gte, lte, count, desc } from 'drizzle-orm'
 import { db, runMigrations } from './db'
 import bcrypt from 'bcryptjs'
+
+Menu.setApplicationMenu(null)
 
 function createWindow(): void {
   // Create the browser window.
