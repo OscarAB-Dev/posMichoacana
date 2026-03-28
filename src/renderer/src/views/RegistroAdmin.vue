@@ -38,7 +38,7 @@ async function registrar(): Promise<void> {
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center h-full gap-4">
+  <div class="flex flex-col items-center justify-center min-h-screen gap-4">
     <img
       src="../assets/logoMichoacana.png"
       alt="Logo de paleteria La Michoacana"
